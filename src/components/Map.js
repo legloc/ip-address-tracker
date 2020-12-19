@@ -17,7 +17,7 @@ const Map = ({ lat, lng }) => {
   })
 
   return (
-    <MapContainer className="map-wrapper" center={[ lat, lng ]} zoom={ 14 } scrollWheelZoom={false}>
+    <MapContainer className="map-wrapper" center={[ lat, lng ]} zoom={ 14 } scrollWheelZoom={ true } zoomControl={ false } >
       <ChangeView center={[ lat, lng ]} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'

@@ -99,6 +99,7 @@ header
     flex-direction: column
     border-left: 1px #dcdcdc solid
     padding: 15px 30px
+    text-align: left
 
     &:first-child
       border-left: none
@@ -107,7 +108,6 @@ header
       font-size: .7em
       font-weight: 700
       text-transform: uppercase
-      text-align: left
       letter-spacing: 1px
       color: $darkGray
       margin-bottom: 5px
@@ -115,9 +115,35 @@ header
     .item-value
       font-size: 1em
       font-weight: 700
-      text-align: left
       color: $veryDarkGray
 
 .map-wrapper
   flex-grow: 1
   z-index: 1
+
+@media(max-width: 780px)
+  .form-group
+    .form-input
+      width: 100%
+      font-size: .9em
+  
+  .info
+    width: 100%
+    margin-top: -130px
+
+    .items-wrapper
+      flex-direction: column
+      align-items: stretch
+
+    .info-item
+      border: none
+      text-align: center
+
+      .item-title
+        font-size: .5em
+
+      .item-value
+        font-size: .9em
+
+  .map-wrapper
+    height: 100vh
