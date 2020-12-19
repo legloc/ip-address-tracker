@@ -1,6 +1,6 @@
 const Info = () => {
   return (
-    <div class="info">
+    <div className="info">
       <div className="info-item">
         <span className="item-title">IP address</span>
         <span className="item-value">192.212.174.101</span>
