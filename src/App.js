@@ -7,6 +7,7 @@ import './App.sass'
 
 const App = () => {
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const [state, setState] = useState({
     ip: '8.8.8.8',
     isp: 'Google LLC',
@@ -22,18 +23,19 @@ const App = () => {
   
   const handleFormSubmit = ip => {
     if (ip) {
+      setError(false)
       setLoading(true)
   
       axios.get(`https://geo.ipify.org/api/v1?apiKey=${ process.env.REACT_APP_IPIFY_API_KEY }&ipAddress=${ ip }`)
         .then(response => {
+          setError(false)
           setState(response.data)
         })
         .catch(error => {
-          console.log(error)
+          setError(true)
         })
         .then(() => {
           setLoading(false)
-          console.log(state)
         })
     }
   }
@@ -43,7 +45,7 @@ const App = () => {
       <header>
         <h2 className="header-title">IP Address Tracker</h2>
         <Form handleSubmit={ ip => handleFormSubmit(ip) } />
-        <Info data={ state } loading={ loading } />
+        <Info data={ state } loading={ loading } error={ error } />
       </header>
       <Map lat={ state.location.lat } lng={ state.location.lng } />
     </div>

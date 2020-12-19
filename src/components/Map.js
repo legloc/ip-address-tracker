@@ -4,7 +4,7 @@ import IconLocation from '../images/icon-location.svg'
 
 const ChangeView = ({ center }) => {
   const map = useMap()
-  map.setView(center, 13)
+  map.setView(center, 14)
   return null
 }
 
@@ -17,7 +17,7 @@ const Map = ({ lat, lng }) => {
   })
 
   return (
-    <MapContainer className="map-wrapper" center={[ lat, lng ]} zoom={ 13 } scrollWheelZoom={false}>
+    <MapContainer className="map-wrapper" center={[ lat, lng ]} zoom={ 14 } scrollWheelZoom={false}>
       <ChangeView center={[ lat, lng ]} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'

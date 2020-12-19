@@ -29,6 +29,7 @@ header
 
   .header-title
     font-weight: 500
+    text-shadow: rgba(100, 100, 111, 0.2) 0px 0px 7px
 
 .form-group
   display: flex
@@ -45,6 +46,10 @@ header
     font-family: inherit
     font-size: 1em
     padding: 0 25px
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+
+    &.error
+      border: 1px red solid
 
     &::placeholder
       color: $darkGray
@@ -55,6 +60,7 @@ header
     height: 50px
     border: none
     border-radius: 0 15px 15px 0
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
     transition: background .2s ease-in-out
     cursor: pointer
 
@@ -64,19 +70,29 @@ header
 .info
   position: relative
   display: flex
-  flex-direction: row
-  justify-content: space-between
   background: #ffffff
   width: 80%
-  min-height: 100px
+  min-height: 125px
   border-radius: 15px
   margin-left: auto
   margin-right: auto
-  padding: 30px
   color: $veryDarkGray
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
   transform: translateY(50%)
   z-index: 2
+
+  .info-title
+    width: 100%
+    text-align: center
+    line-height: 125px
+
+  .items-wrapper
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    padding: 15px
 
   .info-item
     display: flex
@@ -91,13 +107,15 @@ header
       font-size: .7em
       font-weight: 700
       text-transform: uppercase
+      text-align: left
       letter-spacing: 1px
       color: $darkGray
       margin-bottom: 5px
 
     .item-value
-      font-size: 1.2em
+      font-size: 1em
       font-weight: 700
+      text-align: left
       color: $veryDarkGray
 
 .map-wrapper
