@@ -7,22 +7,35 @@ import './App.sass'
 
 const App = () => {
   const [loading, setLoading] = useState(false)
+  const [state, setState] = useState({
+    ip: '8.8.8.8',
+    isp: 'Google LLC',
+    location: {
+      country: 'US',
+      city: 'Mountain View',
+      postalCode: '94035',
+      timezone: '-08:00',
+      lat: 37.38605,
+      lng: -122.08385
+    }
+  })
   
   const handleFormSubmit = ip => {
-    console.log('REQUEST STARTED')
-    setLoading(true)
-
-    axios.get(`https://geo.ipify.org/api/v1?apiKey=${ process.env.REACT_APP_IPIFY_API_KEY }&ipAddress=${ ip }`)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      .then(() => {
-        console.log('REQUEST FINISHED')
-        setLoading(false)
-      })
+    if (ip) {
+      setLoading(true)
+  
+      axios.get(`https://geo.ipify.org/api/v1?apiKey=${ process.env.REACT_APP_IPIFY_API_KEY }&ipAddress=${ ip }`)
+        .then(response => {
+          setState(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        .then(() => {
+          setLoading(false)
+          console.log(state)
+        })
+    }
   }
 
   return (
@@ -30,9 +43,9 @@ const App = () => {
       <header>
         <h2 className="header-title">IP Address Tracker</h2>
         <Form handleSubmit={ ip => handleFormSubmit(ip) } />
-        <Info loading={ loading } />
+        <Info data={ state } loading={ loading } />
       </header>
-      <Map />
+      <Map lat={ state.location.lat } lng={ state.location.lng } />
     </div>
   )
 }
